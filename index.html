@@ -1,31 +1,86 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/dawahkit/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/dawahkit/favicon-192.png" />
-  <link rel="apple-touch-icon" sizes="512x512" href="/dawahkit/favicon-512.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary -->
-  <title>DawahKit — Islamic Verse Discovery & Share Tool</title>
-  <meta name="description" content="Search the Quran by keyword or topic. Read, reflect, and generate beautiful shareable verse cards — built for dawah." />
-  <meta name="theme-color" content="#070D1A" />
+    <!-- ═══ Favicons ═══════════════════════════════════════════════ -->
+    <link rel="icon" type="image/png" sizes="32x32"  href="/dawahkit/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/dawahkit/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512"      href="/dawahkit/favicon-512.png" />
 
-  <!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
-  <meta property="og:title" content="DawahKit — Islamic Verse Discovery & Share Tool" />
-  <meta property="og:description" content="Search the Quran by keyword or topic. Generate beautiful verse cards for dawah." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://daud09.github.io/dawahkit/" />
+    <!-- ═══ Primary SEO ════════════════════════════════════════════ -->
+    <title>DawahKit — Islamic Verse Discovery & Share Tool</title>
+    <meta name="description"
+      content="Search the Quran by keyword, topic, or verse reference. Read Arabic text with English translation, explore Tafsir, and generate beautiful shareable verse cards for dawah — free, fast, no ads." />
+    <meta name="keywords"
+      content="Quran, Islamic verses, dawah, Quran search, verse share, tafsir, Islam, Surah, Arabic, DawahKit" />
+    <meta name="author" content="DawahKit" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://daud09.github.io/dawahkit/" />
 
-  <!-- Twitter/X card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="DawahKit" />
-  <meta name="twitter:description" content="Search the Quran by keyword. Generate beautiful verse cards for dawah." />
-  <script type="module" crossorigin src="/dawahkit/assets/index-CAsCP3OZ.js"></script>
-  <link rel="stylesheet" crossorigin href="/dawahkit/assets/index-CGoqRKtq.css">
-</head>
+    <!-- ═══ Open Graph — WhatsApp, Facebook, LinkedIn ═══════════════ -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://daud09.github.io/dawahkit/" />
+    <meta property="og:title"       content="DawahKit — Islamic Verse Discovery & Share Tool" />
+    <meta property="og:description" content="Search the Quran by keyword, topic or verse reference. Generate beautiful shareable verse cards for dawah — free, fast, no ads." />
+    <meta property="og:image"       content="https://daud09.github.io/dawahkit/og-image.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"   content="DawahKit — Islamic Verse Discovery and Share Tool" />
+    <meta property="og:site_name"   content="DawahKit" />
+    <meta property="og:locale"      content="en_GB" />
+
+    <!-- ═══ Twitter / X Card ══════════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="DawahKit — Islamic Verse Discovery & Share Tool" />
+    <meta name="twitter:description" content="Search the Quran by keyword, topic or verse reference. Generate beautiful shareable verse cards for dawah." />
+    <meta name="twitter:image"       content="https://daud09.github.io/dawahkit/og-image.png" />
+
+    <!-- ═══ PWA / Mobile ══════════════════════════════════════════ -->
+    <meta name="theme-color" content="#070D1A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DawahKit" />
+
+    <!-- ═══ JSON-LD Structured Data ═══════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "DawahKit",
+      "url": "https://daud09.github.io/dawahkit/",
+      "description": "Search the Quran by keyword, topic, or verse reference. Generate beautiful shareable verse cards for dawah.",
+      "applicationCategory": "ReligiousApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Daudi Symon"
+      },
+      "keywords": "Quran, Islamic verses, dawah, Tafsir, verse sharing, Islamic app"
+    }
+    </script>
+
+    <script type="module" crossorigin src="/dawahkit/assets/index-C2BaeUWa.js"></script>
+    <link rel="stylesheet" crossorigin href="/dawahkit/assets/index-D_BfgYAO.css">
+  </head>
   <body>
     <div id="root"></div>
   </body>
 </html>
+```
+
+---
+
+### File 2 — Create `public/robots.txt`
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://daud09.github.io/dawahkit/sitemap.xml
