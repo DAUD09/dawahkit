@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daud09.github.io/dawahkit/sitemap.xml
