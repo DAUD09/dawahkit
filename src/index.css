@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@theme {
+  --color-navy-950: #070D1A;
+  --color-navy-900: #0F172A;
+  --color-navy-800: #1E2A45;
+  --color-navy-700: #2D3F63;
+  --color-gold-400: #E8C547;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B8941F;
+  --color-emerald-400: #2DD4BF;
+  --color-emerald-500: #14B8A6;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+
+  --font-display: 'Amiri', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.verse-card-enter {
+  animation: fadeSlideUp 0.4s ease forwards;
+}
+
+/* Light mode card depth */
+:root:not(.dark) .verse-card-enter {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Smooth search bar focus ring */
+.search-focus-ring:focus-within {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
