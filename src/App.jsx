@@ -7,6 +7,7 @@ import SurahBrowser from './components/SurahBrowser'
 import {
   parseSearchQuery,
   searchVerses,
+  searchArabic,
   getVerseByRef,
   getVerseRange,
   getSurahVerses,
@@ -50,7 +51,12 @@ function App() {
     try {
       let verses = []
 
-      if (parsed.type === 'verse') {
+      
+      if (parsed.type === 'arabic') {
+        label = `"${parsed.query}"`
+        verses = await searchArabic(parsed.query)
+
+      } else if (parsed.type === 'verse') {
         label = `Verse ${parsed.surah}:${parsed.ayah}`
         verses = await getVerseByRef(parsed.surah, parsed.ayah)
 

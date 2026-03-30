@@ -1,20 +1,27 @@
 const BASE_URL = 'https://api.alquran.cloud/v1'
 
+function isArabic(text) {
+  return /[\u0600-\u06FF]/.test(text)
+}
+
 // ─── Smart Query Parser ───────────────────────────────────────────
 // Looks at what the user typed and decides which kind of search it is
 
 export function parseSearchQuery(query) {
   const q = query.trim()
 
-  // Pattern: "2:286" or "2 : 286"
+  // Pattern: "2:286"
   const verseRef = q.match(/^(\d{1,3})\s*:\s*(\d{1,3})$/)
   if (verseRef) return { type: 'verse', surah: verseRef[1], ayah: verseRef[2] }
 
-  // Pattern: "2:1-7" or "2:1 to 7"
+  // Pattern: "2:1-7"
   const verseRange = q.match(/^(\d{1,3})\s*:\s*(\d{1,3})\s*(?:-|to)\s*(\d{1,3})$/i)
   if (verseRange) return { type: 'range', surah: verseRange[1], from: verseRange[2], to: verseRange[3] }
 
-  // Default: keyword search
+  // Arabic text detected
+  if (isArabic(q)) return { type: 'arabic', query: q }
+
+  // Default: English keyword
   return { type: 'keyword', query: q }
 }
 
@@ -36,6 +43,34 @@ export async function searchVerses(keyword) {
   return matches.map((verse, index) => ({
     ...verse,
     arabic: arabicResponses[index]?.data?.text || '',
+  }))
+}
+
+export async function searchArabic(arabicText) {
+  const searchRes = await fetch(
+    `${BASE_URL}/search/${encodeURIComponent(arabicText)}/all/quran-uthmani`
+  )
+  const searchData = await searchRes.json()
+
+  if (!searchData.data || !searchData.data.matches) return []
+
+  const matches = searchData.data.matches.slice(0, 12)
+
+  // For Arabic search results, fetch the English translation in parallel
+  const engResponses = await Promise.all(
+    matches.map(m =>
+      fetch(`${BASE_URL}/ayah/${m.number}/en.asad`).then(r => r.json())
+    )
+  )
+
+  return matches.map((verse, index) => ({
+    ...verse,
+    // verse.text is already Arabic from quran-uthmani edition
+    arabic: verse.text,
+    // override text with English for the translation display
+    text: engResponses[index]?.data?.text || '',
+    surah: engResponses[index]?.data?.surah || verse.surah,
+    numberInSurah: engResponses[index]?.data?.numberInSurah || verse.numberInSurah,
   }))
 }
 

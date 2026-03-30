@@ -22,7 +22,7 @@ function SearchBar({ onSearch, isLoading }) {
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
-          placeholder="Search by keyword or topic… e.g. mercy, patience, light"
+          placeholder="Search in English or العربية… e.g. mercy, 2:286, الرحمة"
           className="flex-1 min-w-0 bg-transparent outline-none font-body text-sm md:text-base text-gray-800 dark:text-gray-100 placeholder-gray-400"          disabled={isLoading}
         />
 
