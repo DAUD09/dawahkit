@@ -4,11 +4,12 @@ function SearchBar({ onSearch, isLoading }) {
   const [query, setQuery] = useState('')
 
   function handleSubmit(e) {
-    e.preventDefault()
-    if (query.trim()) {
-      onSearch(query.trim())
-    }
+  e.preventDefault()
+  const trimmed = query.trim()
+  if (trimmed && trimmed.length >= 2) {  // minimum 2 characters
+    onSearch(trimmed)
   }
+}
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-2xl">
