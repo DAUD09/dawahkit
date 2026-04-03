@@ -4,6 +4,9 @@ import SearchBar from './components/SearchBar'
 import VerseCard from './components/VerseCard'
 import PopularVerses from './components/PopularVerses'
 import SurahBrowser from './components/SurahBrowser'
+import Footer from './components/Footer'
+import PrivacyPage from './components/PrivacyPage'
+import TermsPage from './components/TermsPage'
 import {
   parseSearchQuery,
   searchVerses,
@@ -20,6 +23,7 @@ function App() {
   const [error, setError] = useState(null)
   const [hasSearched, setHasSearched] = useState(false)
   const [searchLabel, setSearchLabel] = useState('')
+  const [currentPage, setCurrentPage] = useState('home')
 
   useEffect(() => {
     if (darkMode) {
@@ -38,6 +42,11 @@ function App() {
     setResults([])
     setError(null)
     setSearchLabel('')
+  }
+
+  function handleNavigate(page) {
+    setCurrentPage(page)
+    window.scrollTo(0, 0)
   }
 
   async function handleSearch(rawQuery) {
@@ -180,7 +189,17 @@ function App() {
         )}
 
       </main>
-    </div>
+      {/* ── LEGAL PAGES ── */}
+    {currentPage === 'privacy' && (
+      <PrivacyPage onBack={() => setCurrentPage('home')} />
+    )}
+    {currentPage === 'terms' && (
+      <TermsPage onBack={() => setCurrentPage('home')} />
+    )}
+
+    <Footer onNavigate={handleNavigate} />
+
+    </div>   
   )
 }
 
